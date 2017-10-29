@@ -13,6 +13,34 @@ class Product(models.Model):
     discounted_price = models.DecimalField(max_digits=5, decimal_places=2, null=True, blank=True)
     slug = models.SlugField(null=True, blank=True, max_length=170)
 
+    abrigos = "Abr"
+    accesorios = "Acc"
+    americanas = "Ame"
+    basicos = "Bas"
+    botas = "Bot"
+    camisas = "Cam"
+    jerseis = "Jer"
+    pantalones = "Pan"
+    sudaderas = "Sud"
+    vaqueros = "Vaq"
+    zapatillas = "Zap"
+
+    category_choices = (
+        (abrigos, "Abrigos"),
+        (accesorios, "Accesorios"),
+        (americanas, "Americanas"),
+        (basicos, "Basicos"),
+        (botas, "Botas"),
+        (camisas, "Camisas"),
+        (jerseis, "Jerseis"),
+        (pantalones, "Pantalones"),
+        (sudaderas, "Sudaderas"),
+        (vaqueros, "Vaqueros"),
+        (zapatillas, "Zapatillas"),
+    )
+
+    category = models.CharField(max_length=20, choices=category_choices, null=True)
+
     def __str__(self):
         return self.name
 

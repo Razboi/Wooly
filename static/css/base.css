@@ -66,3 +66,24 @@ nav {
   text-decoration: none;
   color: #000000;
 }
+
+/* ------------------------Index ------------------- */
+
+#index_container {
+  margin-top: 20px;
+}
+
+.product_container {
+  margin-top: 40px;
+}
+
+.product_container img {
+  display: block;
+  margin: 0px auto;
+  
+}
+
+.item_data {
+  text-align: center;
+  padding: 20px 0px 20px 0px;
+}
