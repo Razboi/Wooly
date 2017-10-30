@@ -19,12 +19,14 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.views.generic import TemplateView
 
-from apps.products.views import ProductsList, IndexView
+from apps.products.views import IndexView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', TemplateView.as_view(template_name="products/landing_page.html"), name="landing"),
     url(r'^(?P<gender>[\w-]+)/$', IndexView.as_view(), name="index"),
+    url(r'^(?P<gender>[\w-]+)/(?P<category>[\w-]+)/', include('apps.products.urls', namespace='products')),
+
 ]
 
 # the project will use this static settings in DEVELOPMENT ONLY

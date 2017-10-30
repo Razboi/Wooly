@@ -105,7 +105,7 @@ nav {
 
 #sub_menu ul {
   position: absolute;
-  left: 90px;
+  left: 95px;
   padding: 10px 0px;
   margin: 0px;
 }
@@ -127,11 +127,11 @@ nav {
   overflow: hidden;
 }
 
-#jumbo_men_01 {
+#jumbo_Men_01 {
   background-image: url("../images/man-jumbo-01.jpg");
 }
 
-#jumbo_women_01 {
+#jumbo_Women_01 {
   background-image: url("../images/woman-jumbo-02.jpg");
 }
 
@@ -141,13 +141,33 @@ nav {
   height: 900px;
   margin: 0px;
   padding: 0px;
+  position: relative;
 }
 
 .jumbo-text {
   position: absolute;
-  top: 54%;
+  top: 45%;
   text-align: center;
-  color: #000000
+  color: #000;
+}
+
+.jumbo-text span {
+  border: 1px solid #fff;
+  padding: 10px;
+  color: #fff;
+}
+
+.jumbo-text span:hover {
+  color: #000;
+  background: #fff;
+}
+
+#ofertas_jumbo {
+  font-size: 20px;
+}
+
+.jumbo-text a {
+  text-decoration: none;
 }
 
 .index_second_info {
@@ -170,27 +190,27 @@ nav {
   padding: 0px;
 }
 
-#men_0101 {
+#Men_0101 {
   background-image: url("../images/man-album-01.jpg");
 }
 
-#men_0102 {
+#Men_0102 {
   background-image: url("../images/man-album-02.jpg");
 }
 
-#women_0101 {
+#Women_0101 {
   background-image: url("../images/woman-album-01.jpg");
 }
 
-#women_0102 {
+#Women_0102 {
   background-image: url("../images/woman-album-02.jpg");
 }
 
-#jumbo_men_02 {
+#jumbo_Men_02 {
   background-image: url("../images/man-jumbo-02.jpg");
 }
 
-#jumbo_women_02 {
+#jumbo_Women_02 {
   background-image: url("../images/woman-jumbo-03.jpg");
   height: 750px;
 }
@@ -200,6 +220,10 @@ nav {
 
 .product_container {
   margin-top: 40px;
+  padding: 0px;
+  float: left;
+  overflow: hidden;
+  height: 761.7px;
 }
 
 .product_container img {
@@ -210,4 +234,32 @@ nav {
 .item_data {
   text-align: center;
   padding: 20px 0px 20px 0px;
+  font-size: 16px;
+}
+
+.item_data h3 {
+  font-size: 17px;
+}
+
+.sidebar {
+  padding: 20px 0px 0px 0px;
+  font-size: 15px;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding-top: 10px;
+}
+
+.sidebar li {
+  padding-left: 10px;
+}
+
+.sidebar a {
+  text-decoration: none;
+  color: #000;
+}
+
+.products_list {
+  padding: 0px;
 }

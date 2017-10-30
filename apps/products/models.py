@@ -10,39 +10,48 @@ class Product(models.Model):
     image = models.ImageField(null=True, blank=True)  # needs pillow
     price = models.DecimalField(max_digits=5, decimal_places=2, default=0)
     discounted = models.BooleanField(default=False)
+    new = models.BooleanField(default=False)
     discounted_price = models.DecimalField(max_digits=5, decimal_places=2, null=True, blank=True)
     slug = models.SlugField(null=True, blank=True, max_length=170)
 
-    abrigos = "Abr"
-    accesorios = "Acc"
-    americanas = "Ame"
-    basicos = "Bas"
-    botas = "Bot"
-    camisas = "Cam"
-    jerseis = "Jer"
-    pantalones = "Pan"
-    sudaderas = "Sud"
-    vaqueros = "Vaq"
-    zapatillas = "Zap"
-
+    # Clothes categories
+    ABRIGOS = "Abrigos"
+    CHAQUETAS = "Chaquetas"
+    AMERICANAS = "Americanas"
+    CAMISETAS = "Camisetas"
+    CAMISAS = "Camisas"
+    JERSEIS = "Jerseis"
+    NOVEDADES = "Novedades"
+    OFERTAS = "Ofertas"
+    PANTALONES = "Pantalones"
+    SUDADERAS = "Sudaderas"
     category_choices = (
-        (abrigos, "Abrigos"),
-        (accesorios, "Accesorios"),
-        (americanas, "Americanas"),
-        (basicos, "Basicos"),
-        (botas, "Botas"),
-        (camisas, "Camisas"),
-        (jerseis, "Jerseis"),
-        (pantalones, "Pantalones"),
-        (sudaderas, "Sudaderas"),
-        (vaqueros, "Vaqueros"),
-        (zapatillas, "Zapatillas"),
+        (ABRIGOS, "Abrigos"),
+        (CHAQUETAS, "Chaquetas"),
+        (AMERICANAS, "Americanas"),
+        (CAMISETAS, "Camisetas"),
+        (CAMISAS, "Camisas"),
+        (JERSEIS, "Jerseis"),
+        (NOVEDADES, "Novedades"),
+        (OFERTAS, "Ofertas"),
+        (PANTALONES, "Pantalones"),
+        (SUDADERAS, "Sudaderas"),
     )
-
     category = models.CharField(max_length=20, choices=category_choices, null=True)
 
+    # Gender Categories
+    MEN = "Men"
+    WOMEN = "Women"
+    category_choices = (
+        (MEN, "Men"),
+        (WOMEN, "Women"),
+    )
+    gender = models.CharField(max_length=20, choices=category_choices, null=True)
+
     def __str__(self):
-        return self.name
+        description = self.name + " | " + self.gender + " |D " + str(self.discounted) + " |N " + \
+                      str(self.new)
+        return description
 
 
 def pre_save_receiver(sender, instance, *args, **kwargs):

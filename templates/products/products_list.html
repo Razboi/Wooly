@@ -1,16 +1,48 @@
-{% extends 'snippets/base.html' %}{% block title %}Wooly{% endblock %}{% block content %}
+{% extends 'snippets/base.html' %}{% block title %}{{title}}{% endblock %}{% block content %}
 
 <div class="container-fluid" id="products_container">
   <div class="row">
-    {% for product in object_list %}
-    <div class="col-6 product_container">
-      <img src="{{ product.image.url}}" />
-      <div class="item_data">
-        <h3 class="name">{{ product.name }}</h3>
-        <span class="price">{{ product.price }}</span>
-      </div>
+    <div class="col-2 sidebar">
+      <ul>
+        <b>Prendas</b>
+        <li><a href="{% url 'products:category' gender=gender category='Abrigos' %}">Abrigos</a></li>
+        <li><a href="{% url 'products:category' gender=gender category='Chaquetas' %}">Chaquetas</a></li>
+        <li><a href="{% url 'products:category' gender=gender category='Americanas' %}">Americanas</a></li>
+        <li><a href="{% url 'products:category' gender=gender category='Jerseis' %}">Jerséis y cárdigans</a></li>
+        <li><a href="{% url 'products:category' gender=gender category='Sudaderas' %}">Sudaderas</a></li>
+        <li><a href="{% url 'products:category' gender=gender category='Camisas' %}">Camisas</a></li>
+        <li><a href="{% url 'products:category' gender=gender category='Camisetas' %}">Camisetas</a></li>
+        <li><a href="{% url 'products:category' gender=gender category='Pantalones' %}">Pantalones</a></li>
+      </ul>
+      <ul>
+        <b>Calzado</b>
+        <li>Zapatos</li>
+        <li>Mocasines</li>
+        <li>Botas y botines</li>
+        <li>Deportivas</li>
+      </ul>
+      <ul>
+        <b>Complementos</b>
+        <li>Bolsos</li>
+        <li>Carteras</li>
+        <li>Cinturones</li>
+        <li>Bufandas y fulares</li>
+        <li>Gorros y guantes</li>
+        <li>Corbatas</li>
+      </ul>
     </div>
-    {% endfor %}
+    <div class="col-10 products_list">
+      {% for product in object_list %}
+      <div class="col-4 product_container">
+        <img src="{{ product.image.url}}" />
+        <div class="item_data">
+          <h3 class="name">{{ product.name }}</h3>
+          <span class="price">{{ product.price }}</span>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
   </div>
 </div>
 

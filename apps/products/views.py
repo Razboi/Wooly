@@ -7,8 +7,28 @@ from .models import Product
 class ProductsList(ListView):
     template_name = "products/products_list.html"
 
-    def get_queryset(self):
-        return Product.objects.all()
+    def get_queryset(self, **kwargs):
+        gender = self.kwargs.get("gender")
+        category = self.kwargs.get("category")
+        if category == "Novedades":
+            products = Product.objects.filter(gender=gender, new=True)
+        elif category == "Ofertas":
+            products = Product.objects.filter(gender=gender, discounted=True)
+        else:
+            products = Product.objects.filter(gender=gender, category=category)
+        return products
+
+    def get_context_data(self, **kwargs):
+        context = super(ProductsList, self).get_context_data(**kwargs)
+        gender = self.kwargs.get("gender")
+        context["gender"] = gender
+        category = self.kwargs.get("category")
+        if gender == "women":
+            title = str(category) + " Mujer"
+        else:
+            title = str(category) + " Hombre"
+        context["title"] = title
+        return context
 
 
 class IndexView(ListView):
@@ -21,7 +41,7 @@ class IndexView(ListView):
         context = super(IndexView, self).get_context_data(**kwargs)
         gender = self.kwargs.get("gender")
         context["gender"] = gender
-        if gender == "women":
+        if gender == "Women":
             title = "Moda Mujer"
         else:
             title = "Moda Hombre"

@@ -5,6 +5,9 @@
     <div class="container-fluid jumbo-text">
       <h1 class="display-3">Indigo</h1>
       <p class="lead">Collection</p>
+      <a href="{% url 'products:category' gender=gender category='Novedades' %}">
+        <span>Ver Novedades</span>
+      </a>
     </div>
   </div>
 
@@ -26,11 +29,12 @@
 
   <div class="jumbotron jumbotron-fluid" id="jumbo_{{gender}}_02">
     <div class="container-fluid jumbo-text">
-      <h1 class="display-3">Indigo</h1>
-      <p class="lead">Collection</p>
+      <a href="{% url 'products:category' gender=gender category='Ofertas' %}">
+        <span id="ofertas_jumbo">Ver Ofertas</span>
+      </a>
     </div>
   </div>
-  
+
 </div>
 
 {% endblock %}

@@ -10,10 +10,10 @@
     <!-- Left Elements -->
     <ul class="navbar-nav ml-auto" id="nav_genders">
       <li class="nav-item">
-        <a href="{% url 'index' gender='women' %}">Mujer</a>
+        <a href="{% url 'index' gender='Women' %}">Mujer</a>
       </li>
       <li class="nav-item">
-        <a href="{% url 'index' gender='men' %}">Hombre</a>
+        <a href="{% url 'index' gender='Men' %}">Hombre</a>
       </li>
       <li class="nav-item">
         <a href="#"><i class="fa fa-search"></i></a>
@@ -35,16 +35,19 @@
 <div id="sub_menu">
   <ul>
     <li>
-      <a href="#">Ofertas</a>
+      <a href="{% url 'products:category' gender=gender category='Novedades' %}">Novedades</a>
     </li>
     <li>
-      <a href="#">Ropa</a>
+      <a href="{% url 'products:category' gender=gender category='Ofertas' %}">Ofertas</a>
     </li>
     <li>
-      <a href="#">Calzado</a>
+      <a href="{% url 'products:category' gender=gender category='Novedades' %}">Prendas</a>
     </li>
     <li>
-      <a href="#">Accesorios</a>
+      <a href="{% url 'products:category' gender=gender category='Calzado' %}">Calzado</a>
+    </li>
+    <li>
+      <a href="{% url 'products:category' gender=gender category='Accesorios' %}">Complementos</a>
     </li>
   </ul>
 </div>
