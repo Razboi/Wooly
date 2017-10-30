@@ -1,0 +1,34 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <title>Wooly</title>
+  {% include 'snippets/bootstrap.html' %}
+  {% include 'snippets/general_style.html' %}
+</head>
+<body>
+  <div class="container-fluid" id="landing_container">
+    <div class="row">
+
+      <div class="col-6 gender_landing" id="women_landing">
+        <a href="{% url 'index' gender='women' %}">
+          <div class="landing_gender_info women">
+            <h1 class="display-3">Women</h1>
+            <p class="lead">Collection</p>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-6 gender_landing" id="men_landing">
+        <a href="{% url 'index' gender='men' %}">
+          <div class="landing_gender_info men">
+            <h1 class="display-3">Men</h1>
+            <p class="lead">Collection</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

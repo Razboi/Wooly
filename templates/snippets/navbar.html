@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-md navbar-custom">
   <!-- Brand and toggle -->
-  <a class="navbar-brand" href="{% url 'index' %}">Wooly</a>
+  <a class="navbar-brand" href="{% url 'index' gender=gender %}">Wooly</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_wrapper"
   aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="fa fa-bars"></span>
@@ -10,10 +10,10 @@
     <!-- Left Elements -->
     <ul class="navbar-nav ml-auto" id="nav_genders">
       <li class="nav-item">
-        <a href="#">Mujer</a>
+        <a href="{% url 'index' gender='women' %}">Mujer</a>
       </li>
       <li class="nav-item">
-        <a href="#">Hombre</a>
+        <a href="{% url 'index' gender='men' %}">Hombre</a>
       </li>
       <li class="nav-item">
         <a href="#"><i class="fa fa-search"></i></a>

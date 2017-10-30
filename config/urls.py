@@ -17,12 +17,14 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
+from django.views.generic import TemplateView
 
-from apps.products.views import ProductsList
+from apps.products.views import ProductsList, IndexView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', ProductsList.as_view(), name="index"),
+    url(r'^$', TemplateView.as_view(template_name="products/landing_page.html"), name="landing"),
+    url(r'^(?P<gender>[\w-]+)/$', IndexView.as_view(), name="index"),
 ]
 
 # the project will use this static settings in DEVELOPMENT ONLY
