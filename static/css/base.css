@@ -1,4 +1,14 @@
-/* ------------------------NavBar ------------------- */
+/* ------------------------ General ------------------- */
+body {
+  /*font-family: 'Rozha One', serif;*/
+  font-family: 'Lato', sans-serif;
+}
+
+#content_wrapper {
+  padding-top: 110px;
+}
+
+/* ------------------------ Landing ------------------- */
 
 #landing_container {
   height: 100vh;  /* All the view */
@@ -28,6 +38,7 @@
   position: absolute;
   top: 55%;
   color: #ffffff;
+  font-family: 'Dancing Script', cursive;
 }
 
 .landing_gender_info.men {
@@ -49,6 +60,10 @@
 
 /* ------------------------NavBar ------------------- */
 
+#navbar_wrapper {
+  background: rgba(255, 255, 255, 0.6);
+}
+
 nav {
   padding: 0px !important;
   height: 60px;
@@ -65,6 +80,15 @@ nav {
   padding: 0px;
   margin: 0px;
   top: 25%;
+  font-family: 'Rozha One', serif;
+}
+
+.logo {
+  position: absolute;
+  left: 48.5%;
+  height: 54px;
+  width: 54px;
+  top: 0px;
 }
 
 #nav_genders {
@@ -73,7 +97,7 @@ nav {
 }
 
 #nav_genders li {
-  padding-left: 5px;
+  padding-right: 15px;
 }
 
 #nav_genders a {
@@ -105,7 +129,7 @@ nav {
 
 #sub_menu ul {
   position: absolute;
-  left: 95px;
+  left: 90px;
   padding: 10px 0px;
   margin: 0px;
 }
@@ -149,6 +173,7 @@ nav {
   top: 45%;
   text-align: center;
   color: #000;
+  font-family: 'Rozha One', serif;
 }
 
 .jumbo-text span {
@@ -172,10 +197,12 @@ nav {
 
 .index_second_info {
   text-align: center;
+  position: relative;
 }
 
 .index_second_info h3 {
-  padding: 80px 0px;
+  padding: 45px 0px 120px 0px;
+  margin: 0px;
 
 }
 
@@ -215,6 +242,15 @@ nav {
   height: 750px;
 }
 
+.icon {
+  height: 100px;
+  width: 100px;
+  position: absolute;
+  top: 80px;
+  right: 47.5%;
+}
+
+
 
 /* ------------------------Products ------------------- */
 
@@ -243,7 +279,8 @@ nav {
 
 .sidebar {
   padding: 20px 0px 0px 0px;
-  font-size: 15px;
+  font-size: 14.5px;
+  top: 130px;
 }
 
 .sidebar ul {

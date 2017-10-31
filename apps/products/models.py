@@ -14,17 +14,34 @@ class Product(models.Model):
     discounted_price = models.DecimalField(max_digits=5, decimal_places=2, null=True, blank=True)
     slug = models.SlugField(null=True, blank=True, max_length=170)
 
-    # Clothes categories
+    # Product sections
+    PRENDAS = "Prendas"
+    CALZADO = "Calzado"
+    COMPLEMENTOS = "Complementos"
+    section_choices = (
+        (PRENDAS, "Prendas"),
+        (CALZADO, "Calzado"),
+        (COMPLEMENTOS, "Complementos"),
+    )
+    section = models.CharField(max_length=20, choices=section_choices, default=PRENDAS)
+
+    # Product categories
     ABRIGOS = "Abrigos"
     CHAQUETAS = "Chaquetas"
     AMERICANAS = "Americanas"
     CAMISETAS = "Camisetas"
     CAMISAS = "Camisas"
     JERSEIS = "Jerseis"
-    NOVEDADES = "Novedades"
-    OFERTAS = "Ofertas"
     PANTALONES = "Pantalones"
     SUDADERAS = "Sudaderas"
+    ZAPATOS = "Zapatos"
+    MOCASINES = "Mocasines"
+    BOTAS = "Botas"
+    DEPORTIVAS = "Deportivas"
+    CINTURONES = "Cinturones"
+    BUFANDAS = "Bufandas"
+    GORROS = "Gorros"
+    CORBATAS = "Corbatas"
     category_choices = (
         (ABRIGOS, "Abrigos"),
         (CHAQUETAS, "Chaquetas"),
@@ -32,10 +49,16 @@ class Product(models.Model):
         (CAMISETAS, "Camisetas"),
         (CAMISAS, "Camisas"),
         (JERSEIS, "Jerseis"),
-        (NOVEDADES, "Novedades"),
-        (OFERTAS, "Ofertas"),
         (PANTALONES, "Pantalones"),
         (SUDADERAS, "Sudaderas"),
+        (ZAPATOS, "Zapatos"),
+        (MOCASINES, "Mocasines"),
+        (BOTAS, "Botas"),
+        (DEPORTIVAS, "Deportivas"),
+        (CINTURONES, "Cinturones"),
+        (BUFANDAS, "Bufandas"),
+        (GORROS, "Gorros"),
+        (CORBATAS, "Corbatas"),
     )
     category = models.CharField(max_length=20, choices=category_choices, null=True)
 

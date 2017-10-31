@@ -13,6 +13,8 @@
 
   <div class="index_second_info">
     <h3>Envios gratuitos en 24 horas.</h3>
+    {% load static %}
+    <img class="delivery icon" src="{% static 'images/delivery-icon.png' %}" />
   </div>
 
   <div class="row index_album01">
@@ -25,6 +27,7 @@
 
   <div class="index_second_info">
     <h3>Devoluciones gratuitas sin moverte de casa.</h3>
+    <img class="return icon" src="{% static 'images/free-return.png' %}" />
   </div>
 
   <div class="jumbotron jumbotron-fluid" id="jumbo_{{gender}}_02">

@@ -10,10 +10,18 @@ class ProductsList(ListView):
     def get_queryset(self, **kwargs):
         gender = self.kwargs.get("gender")
         category = self.kwargs.get("category")
+        sections = ["Prendas", "Calzado", "Complementos"]
+        # if the category is a section return all the products for that section
+        for i in sections:
+            if i == category:
+                products = Product.objects.filter(gender=gender, section=i)
+                return products
+        # if the category is novedades return the new products, same with ofertas/discounted products
         if category == "Novedades":
             products = Product.objects.filter(gender=gender, new=True)
         elif category == "Ofertas":
             products = Product.objects.filter(gender=gender, discounted=True)
+        # else return the products in the category
         else:
             products = Product.objects.filter(gender=gender, category=category)
         return products

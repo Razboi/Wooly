@@ -1,53 +1,58 @@
-<nav class="navbar navbar-expand-md navbar-custom">
-  <!-- Brand and toggle -->
-  <a class="navbar-brand" href="{% url 'index' gender=gender %}">Wooly</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_wrapper"
-  aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="fa fa-bars"></span>
-  </button>
+<div id="navbar_wrapper" class="fixed-top">
+  <nav class="navbar navbar-expand-md navbar-custom">
+    <!-- Brand and toggle -->
+    <a class="navbar-brand" href="{% url 'index' gender=gender %}">Wooly</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_wrapper"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="fa fa-bars"></span>
+    </button>
 
-  <div class="collapse navbar-collapse" id="navbar_wrapper">
-    <!-- Left Elements -->
-    <ul class="navbar-nav ml-auto" id="nav_genders">
-      <li class="nav-item">
-        <a href="{% url 'index' gender='Women' %}">Mujer</a>
+    <div class="collapse navbar-collapse" id="navbar_wrapper">
+      <!-- Left Elements -->
+      <ul class="navbar-nav ml-auto" id="nav_genders">
+        <li class="nav-item">
+          <a href="{% url 'index' gender='Women' %}">Mujer</a>
+        </li>
+        <li class="nav-item">
+          <a href="{% url 'index' gender='Men' %}">Hombre</a>
+        </li>
+        <li class="nav-item">
+          <a href="#"><i class="fa fa-search"></i></a>
+        </li>
+      </ul>
+
+      <!-- Right Elements -->
+      <ul class="navbar-nav ml-auto" id="nav_right_elements">
+        <li class="nav-item">
+          <a href="#"><i class="fa fa-user nav_icon"></i></a>
+        </li>
+        <li class="nav-item">
+          <a href="#"><i class="fa fa-shopping-bag nav_icon"></i></a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div id="sub_menu">
+    <ul>
+      <li>
+        <a href="{% url 'products:category' gender=gender category='Novedades' %}">Novedades</a>
       </li>
-      <li class="nav-item">
-        <a href="{% url 'index' gender='Men' %}">Hombre</a>
+      <li>
+        <a href="{% url 'products:category' gender=gender category='Ofertas' %}">Ofertas</a>
       </li>
-      <li class="nav-item">
-        <a href="#"><i class="fa fa-search"></i></a>
+      <li>
+        <a href="{% url 'products:category' gender=gender category='Prendas' %}">Prendas</a>
+      </li>
+      <li>
+        <a href="{% url 'products:category' gender=gender category='Calzado' %}">Calzado</a>
+      </li>
+      <li>
+        <a href="{% url 'products:category' gender=gender category='Complementos' %}">Complementos</a>
       </li>
     </ul>
+    {% load static %}
 
-    <!-- Right Elements -->
-    <ul class="navbar-nav ml-auto" id="nav_right_elements">
-      <li class="nav-item">
-        <a href="#"><i class="fa fa-user nav_icon"></i></a>
-      </li>
-      <li class="nav-item">
-        <a href="#"><i class="fa fa-shopping-bag nav_icon"></i></a>
-      </li>
-    </ul>
+    <a href="{% url 'index' gender=gender %}"><img src="{% static 'images/sheep-logo.png' %}" class="logo" /></a>
   </div>
-</nav>
-
-<div id="sub_menu">
-  <ul>
-    <li>
-      <a href="{% url 'products:category' gender=gender category='Novedades' %}">Novedades</a>
-    </li>
-    <li>
-      <a href="{% url 'products:category' gender=gender category='Ofertas' %}">Ofertas</a>
-    </li>
-    <li>
-      <a href="{% url 'products:category' gender=gender category='Novedades' %}">Prendas</a>
-    </li>
-    <li>
-      <a href="{% url 'products:category' gender=gender category='Calzado' %}">Calzado</a>
-    </li>
-    <li>
-      <a href="{% url 'products:category' gender=gender category='Accesorios' %}">Complementos</a>
-    </li>
-  </ul>
 </div>

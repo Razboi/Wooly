@@ -11,7 +11,9 @@
   <header>
     {% include 'snippets/navbar.html' %}
   </header>
-  {% block content %}{% endblock %}
+  <div id="content_wrapper">
+    {% block content %}{% endblock %}
+  </div>
 </body>
 <footer>
 
