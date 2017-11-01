@@ -29,6 +29,7 @@ class Product(models.Model):
     ABRIGOS = "Abrigos"
     CHAQUETAS = "Chaquetas"
     AMERICANAS = "Americanas"
+    VESTIDOS = "Vestidos"
     CAMISETAS = "Camisetas"
     CAMISAS = "Camisas"
     JERSEIS = "Jerseis"
@@ -42,9 +43,12 @@ class Product(models.Model):
     BUFANDAS = "Bufandas"
     GORROS = "Gorros"
     CORBATAS = "Corbatas"
+    FALDAS = "Faldas"
+    BOLSOS = "Bolsos"
     category_choices = (
         (ABRIGOS, "Abrigos"),
         (CHAQUETAS, "Chaquetas"),
+        (VESTIDOS, "Vestidos"),
         (AMERICANAS, "Americanas"),
         (CAMISETAS, "Camisetas"),
         (CAMISAS, "Camisas"),
@@ -59,6 +63,8 @@ class Product(models.Model):
         (BUFANDAS, "Bufandas"),
         (GORROS, "Gorros"),
         (CORBATAS, "Corbatas"),
+        (FALDAS, "Faldas"),
+        (BOLSOS, "Bolsos"),
     )
     category = models.CharField(max_length=20, choices=category_choices, null=True)
 

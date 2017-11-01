@@ -30,8 +30,9 @@ class ProductsList(ListView):
         context = super(ProductsList, self).get_context_data(**kwargs)
         gender = self.kwargs.get("gender")
         context["gender"] = gender
+        print(gender)
         category = self.kwargs.get("category")
-        if gender == "women":
+        if gender == "Women":
             title = str(category) + " Mujer"
         else:
             title = str(category) + " Hombre"

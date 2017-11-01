@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <title>{{ title }} | Wooly</title>
+  {% include 'snippets/bootstrap.html' %}
+  {% include 'snippets/general_style.html' %}
+</head>
+<body>
+  {% load static %}
+  <a href="{% url 'index' gender='Women' %}"><img src="{% static 'images/sheep-logo.png' %}" id="logo_form" /></a>
+
+  <div class="container-fluid" id="accounts_form_container">
+    <div id="form_wrapper">
+      <!-- Login/Register Form -->
+      <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input class="btn btn-default" type="submit" value="{{ title }}" />
+        <input type="hidden" name="next" value="{{ next }}" />
+      </form>
+
+      <div id='accounts_form_misc'>
+        {% if login %}
+        <span id="form_second_option">
+          Don't have an account? <b><a href="{% url 'accounts:register' %}">Sign up</a></b>
+        </span>
+        <br />
+        <span id="forgot_password"><b><a href="#">Forgot your password?</a></b></span>
+        {% else %}
+        Already have an account? <b><a href="{% url 'accounts:login' %}">Login</a></b>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</body>
+</html>

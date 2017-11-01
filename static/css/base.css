@@ -57,6 +57,14 @@ body {
   color: #000000;
 }
 
+#logo_landing {
+  position: absolute;
+  height: 80px;
+  width: 80px;
+  top: 48%;
+  left: 47.9%;
+  z-index: 1;
+}
 
 /* ------------------------NavBar ------------------- */
 
@@ -250,8 +258,6 @@ nav {
   right: 47.5%;
 }
 
-
-
 /* ------------------------Products ------------------- */
 
 .product_container {
@@ -299,4 +305,45 @@ nav {
 
 .products_list {
   padding: 0px;
+}
+
+/* ------------------------ Login/Register ------------------- */
+
+#accounts_form_container {
+  background: #f6f6f6;
+  height: 100vh;
+  padding: 0px;
+}
+
+#form_wrapper {
+  position: absolute;
+  left: 42%;
+  top: 35%;
+  padding: 60px;
+  background: #fff;
+  border-radius: 3px;
+  border: 1px solid #808080;
+  max-width: 341px;
+}
+
+#form_wrapper form {
+  padding-bottom: 30px;
+}
+
+#logo_form {
+  position: absolute;
+  height: 80px;
+  width: 80px;
+  top: 40px;
+  left: 48.5%;
+}
+
+#accounts_form_misc a {
+  text-decoration: none;
+  color: #808080;
+}
+
+#forgot_password {
+  position: absolute;
+  bottom: 30px;
 }
