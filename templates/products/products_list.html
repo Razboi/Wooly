@@ -2,63 +2,22 @@
 
 <div class="container-fluid" id="products_container">
   <div class="row">
-    <div class="col-2">
-      <div class="sidebar fixed-top">
-        <ul>
-          <b>Prendas</b>
-          <li><a href="{% url 'products:category' gender=gender category='Abrigos' %}">Abrigos</a></li>
-          <li><a href="{% url 'products:category' gender=gender category='Chaquetas' %}">Chaquetas</a></li>
-          {% if gender == "Women" %}
-          <li><a href="{% url 'products:category' gender=gender category='Vestidos' %}">Vestidos y Monos</a></li>
-          {% else %}
-          <li><a href="{% url 'products:category' gender=gender category='Americanas' %}">Americanas</a></li>
-          {% endif %}
-          <li><a href="{% url 'products:category' gender=gender category='Jerseis' %}">Jerséis y cárdigans</a></li>
-          <li><a href="{% url 'products:category' gender=gender category='Sudaderas' %}">Sudaderas</a></li>
-          {% if gender == "Women" %}
-          <li><a href="{% url 'products:category' gender=gender category='Camisas' %}">Camisas y tops</a></li>
-          {% else %}
-          <li><a href="{% url 'products:category' gender=gender category='Camisas' %}">Camisas</a></li>
-          {% endif %}
-          <li><a href="{% url 'products:category' gender=gender category='Camisetas' %}">Camisetas</a></li>
-          <li><a href="{% url 'products:category' gender=gender category='Pantalones' %}">Pantalones</a></li>
-          {% if gender == "Women" %}
-          <li><a href="{% url 'products:category' gender=gender category='Faldas' %}">Faldas</a></li>
-          {% endif %}
-        </ul>
-        <ul>
-          <b>Calzado</b>
-          <li><a href="{% url 'products:category' gender=gender category='Zapatos' %}">Zapatos</a></li>
-          {% if gender == "Men" %}
-          <li><a href="{% url 'products:category' gender=gender category='Mocasines' %}">Mocasines</a></li>
-          {% endif %}
-          <li><a href="{% url 'products:category' gender=gender category='Botas' %}">Botas y botines</a></li>
-          <li><a href="{% url 'products:category' gender=gender category='Deportivas' %}">Deportivas</a></li>
-        </ul>
-        <ul>
-          <b>Complementos</b>
-          {% if gender == "Women" %}
-          <li><a href="{% url 'products:category' gender=gender category='Bolsos' %}">Bolsos</a></li>
-          {% endif %}
-          <li><a href="{% url 'products:category' gender=gender category='Cinturones' %}">Cinturones</a></li>
-          <li><a href="{% url 'products:category' gender=gender category='Bufandas' %}">Bufandas y fulares</a></li>
-          <li><a href="{% url 'products:category' gender=gender category='Gorros' %}">Gorros y guantes</a></li>
-          {% if gender == "Men" %}
-          <li><a href="{% url 'products:category' gender=gender category='Corbatas' %}">Corbatas</a></li>
-          {% endif %}
-        </ul>
-      </div>
-
+    <div class="col-2 sidebar_wrapper">
+      {% include 'snippets/sidebar.html' %}
     </div>
     <div class="col-10 products_list">
       {% for product in object_list %}
-      <div class="col-4 product_container">
-        <img src="{{ product.image.url}}" />
-        <div class="item_data">
-          <h3 class="name">{{ product.name }}</h3>
-          <span class="price">{{ product.price }}</span>
+      <a href="{% url 'products:details' gender=gender slug=product.slug %}">
+        <div class="col-4 product_container">
+          <img src="{{ product.image.url}}" />
+          <div class="item_data">
+            <h3 class="name">{{ product.name }}</h3>
+            <span class="price">{{ product.price }} €</span>
+          </div>
         </div>
-      </div>
+      </a>
+
+
       {% endfor %}
     </div>
 

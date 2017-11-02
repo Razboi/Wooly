@@ -1,7 +1,26 @@
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 from django.db.models import Q
 
 from .models import Product
+
+
+class ProductDetails(DetailView):
+    template_name = "products/products_details.html"
+
+    # get the object and pass it to the template
+    def get_queryset(self):
+        product_slug = self.kwargs.get("slug")
+        product = Product.objects.filter(slug=product_slug)
+        return product
+
+    def get_context_data(self, **kwargs):
+        context = super(ProductDetails, self).get_context_data(**kwargs)
+        product_slug = self.kwargs.get("slug")
+        product = Product.objects.get(slug=product_slug)
+        context["title"] = product.name
+        context["gender"] = self.kwargs.get("gender")
+        context["section"] = product.section
+        return context
 
 
 class ProductSearch(ListView):
@@ -10,12 +29,12 @@ class ProductSearch(ListView):
     def get_queryset(self, **kwargs):
         gender = self.kwargs.get("gender")
         query = self.request.GET.get("q")
-        print(query)
+        # every Q represents an option and every | represents the logical operator OR
         products = Product.objects.filter(
             Q(name__icontains=query, gender=gender) |
             Q(section__icontains=query, gender=gender) |
             Q(category__icontains=query, gender=gender)
-        ).distinct()
+        ).distinct()  # distinct to avoid duplicates
         return products
 
     def get_context_data(self, **kwargs):
