@@ -52,7 +52,7 @@ def login_view(request):
         if next_url:
             return HttpResponseRedirect(next_url)
         else:
-            return redirect('index', gender='Women')
+            return redirect('products:index', gender='Women')
 
     # if its a get request or the posted form is not valid render the form
     return render(request, template_name, context)
@@ -60,4 +60,4 @@ def login_view(request):
 
 def logout_view(request):
     logout(request)
-    return redirect('index', gender='Women')
+    return redirect('products:index', gender='Women')

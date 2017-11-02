@@ -1,4 +1,4 @@
-{% extends 'snippets/base.html' %}
+{% extends 'snippets/base.html' %}{% block title %}{{ title }}{% endblock %}
 {% block content %}
 <div class="container-fluid" id="product_details_container">
   <div class="row">
@@ -16,42 +16,46 @@
         {{ object.description | safe}}
       </p>
 
-      <!-- Change sizes depending on the section and the gender -->
-      <select id="size_selector" name="sizes">
-        {% if section == "Calzado" %}
-        <option value="default" selected disabled hidden>Selecciona tu talla</option>
-        {% if gender == "Women" %}
-        <option value="36">36</option>
-        <option value="37">37</option>
-        <option value="38">38</option>
-        <option value="39">39</option>
-        <option value="40">40</option>
-        <option value="41">41</option>
-        {% else %}
-        <option value="41">41</option>
-        <option value="42">42</option>
-        <option value="43">43</option>
-        <option value="44">44</option>
-        <option value="45">45</option>
-        <option value="46">46</option>
-        {% endif %}
-        {% endif %}
-        {% if section == "Prendas" %}
-        <option value="default" selected disabled hidden>Selecciona tu talla</option>
-        <option value="XS">XS</option>
-        <option value="S">S</option>
-        <option value="M">M</option>
-        <option value="L">L</option>
-        <option value="XL">XL</option>
-        {% endif %}
-        {% if section == "Complementos" %}
-        <option value="default" selected>Talla única</option>
-        {% endif %}
-      </select>
-      <br />
-      <button id="addto_cart" class="btn btn-default" type="submit">
-        Añadir a mi cesta
-      </button>
+      <form method="POST" action="{% url 'cart:create' pk=object.pk %}">
+        {% csrf_token %}
+        <!-- Change sizes depending on the section and the gender -->
+        <select id="size_selector" name="sizes">
+          {% if section == "Calzado" %}
+          <option value="default" selected disabled hidden>Selecciona tu talla</option>
+          {% if gender == "Women" %}
+          <option value="36">36</option>
+          <option value="37">37</option>
+          <option value="38">38</option>
+          <option value="39">39</option>
+          <option value="40">40</option>
+          <option value="41">41</option>
+          {% else %}
+          <option value="41">41</option>
+          <option value="42">42</option>
+          <option value="43">43</option>
+          <option value="44">44</option>
+          <option value="45">45</option>
+          <option value="46">46</option>
+          {% endif %}
+          {% endif %}
+          {% if section == "Prendas" %}
+          <option value="default" selected disabled hidden>Selecciona tu talla</option>
+          <option value="XS">XS</option>
+          <option value="S">S</option>
+          <option value="M">M</option>
+          <option value="L">L</option>
+          <option value="XL">XL</option>
+          {% endif %}
+          {% if section == "Complementos" %}
+          <option value="default" selected>Talla única</option>
+          {% endif %}
+        </select>
+        <br />
+        <button id="addto_cart" class="btn btn-default" type="submit">
+          Añadir a mi cesta
+        </button>
+      </form>
+
 
     </div>
   </div>

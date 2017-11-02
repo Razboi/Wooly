@@ -23,9 +23,9 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', TemplateView.as_view(template_name="products/landing_page.html"), name="landing"),
     url(r'^accounts/', include('apps.accounts.urls', namespace='accounts')),
+    url(r'^cart/', include('apps.cart.urls', namespace='cart')),
     # urls with slugs should go behind the hardcoded urls to avoid false matching
     url(r'^(?P<gender>[\w-]+)/', include('apps.products.urls', namespace='products')),
-
 
 ]
 

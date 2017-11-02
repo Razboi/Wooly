@@ -35,7 +35,8 @@
           {% endif %}
         </li>
         <li class="nav-item">
-          <a href="#"><i class="fa fa-shopping-bag nav_icon"></i></a>
+          <i id="cart_icon" class="fa fa-shopping-bag nav_icon"></i> {{cart_products.count}}
+
         </li>
       </ul>
     </div>
@@ -63,4 +64,10 @@
     {% load static %}
     <a href="{% url 'products:index' gender=gender %}"><img src="{% static 'images/sheep-logo.png' %}" class="logo" /></a>
   </div>
+  <div id="cart_wrapper">
+    {% for cp in cart_products %}
+    {{cp.product.name}}
+    {% endfor %}
+  </div>
+
 </div>

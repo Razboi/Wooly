@@ -446,3 +446,15 @@ nav {
   position: absolute;
   bottom: 30px;
 }
+
+/* ------------------------ Cart ------------------- */
+
+#cart_wrapper {
+  width: 300px;
+  height: 500px;
+  position: absolute;
+  top: 60px;
+  right: 50px;
+  border: 1px solid black;
+  display: none;
+}
