@@ -12,7 +12,7 @@
       {% load static %}
       <img src="{% static 'images/sheep-logo.png' %}" id="logo_landing" />
       <div class="col-6 gender_landing" id="women_landing">
-        <a href="{% url 'index' gender='Women' %}">
+        <a href="{% url 'products:index' gender='Women' %}">
           <div class="landing_gender_info women">
             <h1 class="display-3">Women</h1>
             <p class="lead">Fashion</p>
@@ -21,7 +21,7 @@
       </div>
 
       <div class="col-6 gender_landing" id="men_landing">
-        <a href="{% url 'index' gender='Men' %}">
+        <a href="{% url 'products:index' gender='Men' %}">
           <div class="landing_gender_info men">
             <h1 class="display-3">Men</h1>
             <p class="lead">Fashion</p>

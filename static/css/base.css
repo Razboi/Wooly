@@ -99,18 +99,22 @@ nav {
   top: 0px;
 }
 
-#nav_genders {
+#nav_left {
   position: absolute;
   left: 90px;
 }
 
-#nav_genders li {
+#nav_left li {
   padding-right: 15px;
 }
 
-#nav_genders a {
+#nav_left a {
   text-decoration: none;
   color: #000000;
+}
+
+.gender {
+  padding-top: 1.5px;
 }
 
 .nav_icon {
@@ -152,6 +156,29 @@ nav {
   color: #000000;
 }
 
+#search_form {
+  padding-left: 15px;
+}
+
+#search_form button {
+  background: none;
+  padding: 0px 0px 5px 0px;
+}
+
+#search_form input {
+  border: none;
+  background: none;
+  border-bottom: 1px solid transparent;
+  transition: 0.8s ease;
+  transform-origin: left;
+  width: 100px;
+}
+
+#search_form input:focus {
+  border-bottom: 1px solid #000;
+  width: 200px;
+}
+
 /* ------------------------Index ------------------- */
 
 #index_container {
@@ -188,6 +215,7 @@ nav {
   border: 1px solid #fff;
   padding: 10px;
   color: #fff;
+  transition: 0.7s;
 }
 
 .jumbo-text span:hover {
@@ -310,7 +338,9 @@ nav {
 /* ------------------------ Login/Register ------------------- */
 
 #accounts_form_container {
-  background: #f6f6f6;
+  background-image: url('../images/accounts-back.jpg');
+  background-size: cover;
+  background-position: center;
   height: 100vh;
   padding: 0px;
 }
@@ -318,24 +348,25 @@ nav {
 #form_wrapper {
   position: absolute;
   left: 42%;
-  top: 35%;
+  top: 20%;
   padding: 60px;
   background: #fff;
   border-radius: 3px;
   border: 1px solid #808080;
   max-width: 341px;
+  box-shadow: 3px 3px 5px #000;
 }
 
 #form_wrapper form {
-  padding-bottom: 30px;
+  padding: 80px 0px 30px 0px;
 }
 
 #logo_form {
   position: absolute;
   height: 80px;
   width: 80px;
-  top: 40px;
-  left: 48.5%;
+  top: 0;
+  left: 37%;
 }
 
 #accounts_form_misc a {

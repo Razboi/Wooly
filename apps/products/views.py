@@ -1,7 +1,33 @@
-from django.shortcuts import reverse
-from django.views.generic import ListView, View
+from django.views.generic import ListView
+from django.db.models import Q
 
 from .models import Product
+
+
+class ProductSearch(ListView):
+    template_name = "products/products_list.html"
+
+    def get_queryset(self, **kwargs):
+        gender = self.kwargs.get("gender")
+        query = self.request.GET.get("q")
+        print(query)
+        products = Product.objects.filter(
+            Q(name__icontains=query, gender=gender) |
+            Q(section__icontains=query, gender=gender) |
+            Q(category__icontains=query, gender=gender)
+        ).distinct()
+        return products
+
+    def get_context_data(self, **kwargs):
+        context = super(ProductSearch, self).get_context_data(**kwargs)
+        gender = self.kwargs.get("gender")
+        context["gender"] = gender
+        if gender == "Women":
+            title = "Busqueda Mujer"
+        else:
+            title = "Busqueda Hombre"
+        context["title"] = title
+        return context
 
 
 class ProductsList(ListView):
@@ -30,7 +56,6 @@ class ProductsList(ListView):
         context = super(ProductsList, self).get_context_data(**kwargs)
         gender = self.kwargs.get("gender")
         context["gender"] = gender
-        print(gender)
         category = self.kwargs.get("category")
         if gender == "Women":
             title = str(category) + " Mujer"

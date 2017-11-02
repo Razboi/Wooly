@@ -7,11 +7,12 @@
   {% include 'snippets/general_style.html' %}
 </head>
 <body>
-  {% load static %}
-  <a href="{% url 'index' gender='Women' %}"><img src="{% static 'images/sheep-logo.png' %}" id="logo_form" /></a>
+
 
   <div class="container-fluid" id="accounts_form_container">
     <div id="form_wrapper">
+      {% load static %}
+      <a href="{% url 'products:index' gender='Women' %}"><img src="{% static 'images/sheep-logo.png' %}" id="logo_form" /></a>
       <!-- Login/Register Form -->
       <form method="post">
         {% csrf_token %}

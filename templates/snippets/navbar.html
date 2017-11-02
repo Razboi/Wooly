@@ -1,7 +1,7 @@
 <div id="navbar_wrapper" class="fixed-top">
   <nav class="navbar navbar-expand-md navbar-custom">
     <!-- Brand and toggle -->
-    <a class="navbar-brand" href="{% url 'index' gender=gender %}">Wooly</a>
+    <a class="navbar-brand" href="{% url 'products:index' gender=gender %}">Wooly</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_wrapper"
     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="fa fa-bars"></span>
@@ -9,15 +9,19 @@
 
     <div class="collapse navbar-collapse" id="navbar_wrapper">
       <!-- Left Elements -->
-      <ul class="navbar-nav ml-auto" id="nav_genders">
-        <li class="nav-item">
-          <a href="{% url 'index' gender='Women' %}">Mujer</a>
+      <ul class="navbar-nav ml-auto" id="nav_left">
+        <li class="nav-item gender">
+          <a href="{% url 'products:index' gender='Women' %}">Mujer</a>
+        </li>
+        <li class="nav-item gender">
+          <a href="{% url 'products:index' gender='Men' %}">Hombre</a>
         </li>
         <li class="nav-item">
-          <a href="{% url 'index' gender='Men' %}">Hombre</a>
-        </li>
-        <li class="nav-item">
-          <a href="#"><i class="fa fa-search"></i></a>
+          {% csrf_token %}
+          <form id="search_form" method="GET" action="{% url 'products:search' gender=gender %}">
+            <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+            <input type="text" placeholder="Buscar" name="q" value="{{ request.GET.q }}" />
+          </form>
         </li>
       </ul>
 
@@ -57,6 +61,6 @@
     </ul>
 
     {% load static %}
-    <a href="{% url 'index' gender=gender %}"><img src="{% static 'images/sheep-logo.png' %}" class="logo" /></a>
+    <a href="{% url 'products:index' gender=gender %}"><img src="{% static 'images/sheep-logo.png' %}" class="logo" /></a>
   </div>
 </div>

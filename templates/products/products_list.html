@@ -43,7 +43,9 @@
           <li><a href="{% url 'products:category' gender=gender category='Cinturones' %}">Cinturones</a></li>
           <li><a href="{% url 'products:category' gender=gender category='Bufandas' %}">Bufandas y fulares</a></li>
           <li><a href="{% url 'products:category' gender=gender category='Gorros' %}">Gorros y guantes</a></li>
+          {% if gender == "Men" %}
           <li><a href="{% url 'products:category' gender=gender category='Corbatas' %}">Corbatas</a></li>
+          {% endif %}
         </ul>
       </div>
 
