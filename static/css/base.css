@@ -450,11 +450,36 @@ nav {
 /* ------------------------ Cart ------------------- */
 
 #cart_wrapper {
-  width: 300px;
-  height: 500px;
+  width: 350px;
   position: absolute;
   top: 60px;
-  right: 50px;
-  border: 1px solid black;
+  right: 0px;
+  border: 1px solid #000;
+  border-top: none;
   display: none;
+  background: #fff;
+  padding: 20px;
+}
+
+.cart_slider_img {
+  height: 110px;
+  width: 80px;
+}
+
+.cart_slider_name {
+  position: absolute;
+  top: 5px;
+  left: 100px;
+}
+
+.cart_slider_price {
+  position: absolute;
+  top: 25px;
+  left: 110px;
+  font-weight: bold;
+}
+
+#cart_product {
+  margin-top: 20px;
+  position: relative;
 }

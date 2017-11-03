@@ -1,0 +1,10 @@
+<div id="cart_wrapper">
+  <h4>Cesta</h4>
+  {% for cp in cart_products %}
+  <div id="cart_product" class="container-fluid">
+    <img class="cart_slider_img" src="{{cp.product.image.url}}" />
+    <span class="cart_slider_name">{{cp.product.name}}</span>
+    <span class="cart_slider_price">{{cp.product.price}}</span>
+  </div>
+  {% endfor %}
+</div>
