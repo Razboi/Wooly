@@ -17,7 +17,7 @@ def register_view(request):
         user.email = form.cleaned_data.get('email')
         user.save()
         login(request, user)
-        return redirect('index', gender='Women')
+        return redirect('landing')
 
     # if its a get request or the posted form is not valid render the form
     template_name = 'accounts/form.html'
@@ -52,7 +52,7 @@ def login_view(request):
         if next_url:
             return HttpResponseRedirect(next_url)
         else:
-            return redirect('products:index', gender='Women')
+            return redirect('landing')
 
     # if its a get request or the posted form is not valid render the form
     return render(request, template_name, context)
@@ -60,4 +60,4 @@ def login_view(request):
 
 def logout_view(request):
     logout(request)
-    return redirect('products:index', gender='Women')
+    return redirect('landing')

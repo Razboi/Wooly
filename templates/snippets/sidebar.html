@@ -1,6 +1,6 @@
 <div class="sidebar fixed-top">
   <ul>
-    <b>Prendas</b>
+    <b><a href="{% url 'products:category' gender=gender category='Prendas' %}">Prendas</a></b>
     <li><a href="{% url 'products:category' gender=gender category='Abrigos' %}">Abrigos</a></li>
     <li><a href="{% url 'products:category' gender=gender category='Chaquetas' %}">Chaquetas</a></li>
     {% if gender == "Women" %}
@@ -22,7 +22,7 @@
     {% endif %}
   </ul>
   <ul>
-    <b>Calzado</b>
+    <b><a href="{% url 'products:category' gender=gender category='Calzado' %}">Calzado</a></b>
     <li><a href="{% url 'products:category' gender=gender category='Zapatos' %}">Zapatos</a></li>
     {% if gender == "Men" %}
     <li><a href="{% url 'products:category' gender=gender category='Mocasines' %}">Mocasines</a></li>
@@ -31,7 +31,7 @@
     <li><a href="{% url 'products:category' gender=gender category='Deportivas' %}">Deportivas</a></li>
   </ul>
   <ul>
-    <b>Complementos</b>
+    <b><a href="{% url 'products:category' gender=gender category='Complementos' %}">Complementos</a></b>
     {% if gender == "Women" %}
     <li><a href="{% url 'products:category' gender=gender category='Bolsos' %}">Bolsos</a></li>
     {% endif %}

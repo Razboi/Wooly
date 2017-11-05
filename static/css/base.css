@@ -450,10 +450,10 @@ nav {
 /* ------------------------ Cart ------------------- */
 
 #cart_wrapper {
-  width: 350px;
+  width: 390px;
   position: absolute;
   top: 60px;
-  right: 0px;
+  right: 60px;
   border: 1px solid #000;
   border-top: none;
   display: none;
@@ -461,25 +461,69 @@ nav {
   padding: 20px;
 }
 
+#cart_list {
+  max-height: 470px;
+  overflow-y: scroll;
+}
+
+#cart_total {
+  height: 200px;
+  padding: 20px;
+}
+
+#total_price {
+  margin-top: 20px;
+  display: inline-block;
+  width: 100%;
+}
+
+#total_shipment {
+  margin-top: 20px;
+  display: inline-block;
+  width: 100%;
+}
+
+.result {
+  float: right;
+}
+
+#cart_comprar {
+  color: #fff;
+  background: #000;
+  width: 100%;
+  margin-top: 30px;
+}
+
 .cart_slider_img {
   height: 110px;
   width: 80px;
 }
 
-.cart_slider_name {
-  position: absolute;
-  top: 5px;
-  left: 100px;
+.cp_info {
+  float: left;
+  clear: both;
+}
+
+.cp_info.secondary {
+  color: #808080;
+  font-size: 13px;
 }
 
 .cart_slider_price {
-  position: absolute;
-  top: 25px;
-  left: 110px;
   font-weight: bold;
 }
 
 #cart_product {
   margin-top: 20px;
   position: relative;
+  border-bottom: 1px solid #D3D3D3;
+  padding-bottom: 10px;
+}
+
+#cart_product .fa-trash-o {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  font-size: 14px;
+  color: #000;
 }

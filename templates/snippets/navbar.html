@@ -1,7 +1,7 @@
 <div id="navbar_wrapper" class="fixed-top">
   <nav class="navbar navbar-expand-md navbar-custom">
     <!-- Brand and toggle -->
-    <a class="navbar-brand" href="{% url 'products:index' gender=gender %}">Wooly</a>
+    <a class="navbar-brand" href="{% url 'landing' %}">Wooly</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_wrapper"
     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="fa fa-bars"></span>
@@ -62,7 +62,7 @@
     </ul>
 
     {% load static %}
-    <a href="{% url 'products:index' gender=gender %}"><img src="{% static 'images/sheep-logo.png' %}" class="logo" /></a>
+    <a href="{% url 'landing' %}"><img src="{% static 'images/sheep-logo.png' %}" class="logo" /></a>
   </div>
 
   {% include 'snippets/cart-slider.html' %}

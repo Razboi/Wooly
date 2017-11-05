@@ -7,5 +7,9 @@ from .models import CartProduct
 def cart_products_processor(request):
     if request.user.is_authenticated:
         cart_products = CartProduct.objects.filter(user=request.user)
-        return {"cart_products": cart_products}
+        total_price = 0
+        for i in cart_products:
+            total_price = total_price + i.product.price
+        print(total_price)
+        return {"cart_products": cart_products, "total_price": total_price}
     return {"cart_products": None}
