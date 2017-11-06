@@ -8,7 +8,8 @@
       </div>
       <div class="col-8">
         <span class="cart_slider_name cp_info">{{cp.product.name}}</span>
-        <span class="cart_slider_price cp_info">{{cp.product.price}} €</span>
+        <span class="cart_slider_price cp_info">{{cp.product.price}} €
+          {% if cp.quantity > 1 %}<small> x {{cp.quantity}}</small>{% endif %}</span>
         <span class="cart_slider_size cp_info secondary">Talla: {{cp.size}}</span>
         <span class="cart_slider_quantity cp_info secondary">Cantidad: {{cp.quantity}}</span>
         <a href="{% url 'cart:delete' pk=cp.pk %}"><i class="fa fa-trash-o"></i></a>
@@ -21,6 +22,6 @@
     <span id="total_price"><b>Total: <span class="result">{{total_price}}</span></b></span>
     <br />
     <span id="total_shipment">Envío: <span class="result">Gratuito</span></span>
-    <a href="#" class="btn btn-default" id="cart_comprar">Comprar</a>
+    <a href="{% url 'payment:personal' %}" class="btn btn-default" id="cart_comprar">Comprar</a>
   </div>
 </div>

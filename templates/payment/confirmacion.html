@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <title>Datos Personales | Wooly</title>
+  {% include 'snippets/bootstrap-jquery.html' %}
+  {% include 'snippets/general_style.html' %}
+</head>
+<body>
+  <div class="container" id="payment_container">
+    <div id="payment_logo_wrapper">
+      {% load static %}
+      <a id="wrapper_logo_payment" href="{% url 'landing' %}">
+        <img src="{% static 'images/sheep-logo.png' %}" id="logo_payment" />
+      </a>
+    </div>
+
+    <div class="row">
+      <div class="col-9">
+        {% for cp in cart_products %}
+        <div id="cart_product" class="container-fluid row">
+          <div class="col-4">
+            <img class="cart_slider_img" src="{{cp.product.image.url}}" />
+          </div>
+          <div class="col-8">
+            <span class="cart_slider_name cp_info">{{cp.product.name}}</span>
+            <span class="cart_slider_price cp_info">{{cp.product.price}} €
+              {% if cp.quantity > 1 %}<small> x {{cp.quantity}}</small>{% endif %}</span>
+            <span class="cart_slider_size cp_info secondary">Talla: {{cp.size}}</span>
+            <span class="cart_slider_quantity cp_info secondary">Cantidad: {{cp.quantity}}</span>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      <div class="col-3">
+        <span id="total_price"><b>Total: <span class="result">{{total_price}}</span></b></span>
+        <br />
+        <span id="total_shipment">Envío: <span class="result">Gratuito</span></span>
+        <a href="{% url 'payment:personal' %}" class="btn btn-default" id="cart_comprar">Comprar</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

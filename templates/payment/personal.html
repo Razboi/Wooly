@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <title>Datos Personales | Wooly</title>
+  {% include 'snippets/bootstrap-jquery.html' %}
+  {% include 'snippets/general_style.html' %}
+</head>
+<body>
+  <div class="container" id="payment_container">
+      {% load static %}
+      <a href="{% url 'landing' %}">
+        <img src="{% static 'images/sheep-logo.png' %}" id="logo_payment" />
+      </a>
+    <div id="step_wizard">
+      <div class="row">
+        <div class="step">
+          <button type="button" class="btn btn-primary btn-circle">1</button>
+          <p>Identifícate</p>
+        </div>
+        <div class="step">
+          <button type="button" class="btn btn-primary btn-circle">2</button>
+          <p>Datos Personales</p>
+        </div>
+        <div class="step">
+          <button type="button" class="btn btn-primary btn-circle">3</button>
+          <p>Métodos de Envío y Pago</p>
+        </div>
+        <div class="step">
+          <button type="button" class="btn btn-primary btn-circle">4</button>
+          <p>Confirmación</p>
+        </div>
+      </div>
+    </div>
+    <div id="personal_form">
+      <form method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+        <br />
+        <button type="submit" id="personal_form_button" class="btn btn-default">Continuar</button>
+      </form>
+
+    </div>
+
+  </div>
+</body>
+</html>
