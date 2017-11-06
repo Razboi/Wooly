@@ -17,19 +17,19 @@
       <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <input class="btn btn-default" type="submit" value="{{ title }}" />
+        <input class="btn btn-default account_button" type="submit" value="{{ title }}" />
         <input type="hidden" name="next" value="{{ next }}" />
       </form>
 
       <div id='accounts_form_misc'>
         {% if login %}
         <span id="form_second_option">
-          Don't have an account? <b><a href="{% url 'accounts:register' %}">Sign up</a></b>
+          No tienes una cuenta? <b><a href="{% url 'accounts:register' %}">Registrate</a></b>
         </span>
         <br />
-        <span id="forgot_password"><b><a href="#">Forgot your password?</a></b></span>
+        <span id="forgot_password"><b><a href="#">Has olvidado tu contraseña?</a></b></span>
         {% else %}
-        Already have an account? <b><a href="{% url 'accounts:login' %}">Login</a></b>
+        Tienes una cuenta? <b><a href="{% url 'accounts:login' %}">Inicia sesión</a></b>
         {% endif %}
       </div>
     </div>

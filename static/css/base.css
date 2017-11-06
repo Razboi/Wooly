@@ -128,6 +128,27 @@ nav {
   right: 90px;
 }
 
+#nav_username {
+  text-decoration: none;
+  color: #000;
+  margin-right: 20px;
+}
+
+#cart_icon {
+  position: relative;
+}
+
+#cart_icon_count {
+  position: absolute;
+  font-size: 13px;
+  color: #fff;
+  background: #cccccc;
+  border-radius: 3px;
+  padding: 2px;
+  right: 5px;
+  bottom: -10px;
+}
+
 .fa-search {
   padding-left: 15px;
   font-size: 17px !important;
@@ -437,6 +458,10 @@ nav {
   left: 37%;
 }
 
+#accounts_form_misc {
+  font-size: 14px;
+}
+
 #accounts_form_misc a {
   text-decoration: none;
   color: #808080;
@@ -445,6 +470,13 @@ nav {
 #forgot_password {
   position: absolute;
   bottom: 30px;
+}
+
+.account_button {
+  background: #000;
+  color: #fff;
+  width: 100%;
+  margin-top: 20px;
 }
 
 /* ------------------------ Cart ------------------- */

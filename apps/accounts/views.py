@@ -23,7 +23,7 @@ def register_view(request):
     template_name = 'accounts/form.html'
     context = {
         'form': form,
-        'title': 'Sign Up'
+        'title': 'Registrate'
     }
 
     return render(request, template_name, context)
@@ -35,7 +35,7 @@ def login_view(request):
     is_login = True
     context = {
         'form': form,
-        'title': 'Login',
+        'title': 'Iniciar Sesión',
         'login': is_login
     }
     template_name = 'accounts/form.html'
