@@ -7,18 +7,18 @@
   {% include 'snippets/general_style.html' %}
 </head>
 <body>
-  <div class="container" id="payment_container">
+  <div class="container">
       {% load static %}
       <a href="{% url 'landing' %}">
         <img src="{% static 'images/sheep-logo.png' %}" id="logo_payment" />
       </a>
     <div id="step_wizard">
       <div class="row">
-        <div class="step">
+        <div class="step active">
           <button type="button" class="btn btn-primary btn-circle">1</button>
           <p>Identifícate</p>
         </div>
-        <div class="step">
+        <div class="step active">
           <button type="button" class="btn btn-primary btn-circle">2</button>
           <p>Datos Personales</p>
         </div>
@@ -32,12 +32,13 @@
         </div>
       </div>
     </div>
-    <div id="personal_form">
+    <div class="payment_form">
       <form method="post">
+        <h4>Datos Personales</h4>
         {% csrf_token %}
         {{form.as_p}}
         <br />
-        <button type="submit" id="personal_form_button" class="btn btn-default">Continuar</button>
+        <button type="submit" class="btn btn-default payment_button">Continuar</button>
       </form>
 
     </div>

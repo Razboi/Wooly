@@ -579,35 +579,83 @@ nav {
 #step_wizard .btn-circle {
   border-radius: 100%;
   text-align: center;
-  background: #000;
+  background: #D3D3D3;
   color: #fff;
   height: 30px;
   width: 30px;
   font-size: 12px;
   padding: 6px 0px;
-  border: 1px solid #000;
+  border: 1px solid #D3D3D3;
 }
 
-#personal_form {
+#step_wizard .active .btn-circle {
+  background: #000;
+  border-color: #000;
+}
+
+.payment_form {
   margin-top: 60px;
+  position: relative;
 }
 
-#personal_form form {
+.payment_form form {
   border: 1px solid #D3D3D3;
   padding: 30px 0px 20px 0px;
   border-radius: 3px;
 }
 
-#personal_form input {
+.payment_form h4 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.payment_form input {
   margin: 10px auto;
   display: block;
   width: 300px;
 }
 
-#personal_form_button {
+.payment_button {
   background: #000;
   color: #fff;
   position: absolute;
-  top: 55%;
-  right: 450px;
+  right: 30px;
+  bottom: 21px;
+}
+
+#payment_methods {
+  height: 90px;
+}
+
+#payment_confirmation_wrapper {
+  margin-top: 160px;
+  margin-bottom: 100px;
+}
+
+#payment_confirmation_wrapper table {
+  margin-left: 115px;
+}
+
+#payment_confirmation_wrapper table th{
+  padding-left: 50px;
+}
+
+.confirmation_info {
+  float: left;
+}
+
+.confirmation_info.price {
+  font-weight: bold;
+}
+
+#payment_products_list {
+  border: 1px solid #D3D3D3;
+  overflow: hidden;
+  margin-top: 20px;
+}
+
+#payment_completed_wrapper {
+  margin-top: 200px;
+  border: 1px solid #808080;
+  padding: 40px;
 }

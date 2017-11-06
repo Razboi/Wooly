@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <title>Datos Personales | Wooly</title>
+  {% include 'snippets/bootstrap-jquery.html' %}
+  {% include 'snippets/general_style.html' %}
+</head>
+<body>
+  <div class="container">
+    {% load static %}
+    <a href="{% url 'landing' %}">
+      <img src="{% static 'images/sheep-logo.png' %}" id="logo_payment" />
+    </a>
+    <div id="payment_completed_wrapper">
+      <p>
+        Tu compra ha sido completada exitosamente, pronto recibirás un
+        correo electronico con los datos de tu pedido y en 24h te lo entregaremos.
+        Si tienes alguna duda o problema no dudes en ponerte en contacto con nosotros.
+        Haz click <a href="{% url 'landing' %}">aquí</a> para volver a la pagina principal.
+      </p>
+    </div>
+
+  </div>
+</body>
+</html>

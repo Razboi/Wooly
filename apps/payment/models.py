@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth import get_user_model
 
+from apps.products.models import Product
+
 User = get_user_model()
 
 
@@ -22,3 +24,11 @@ class UserFinancialModel(models.Model):
     ciudad = models.CharField(max_length=30)
     provincia = models.CharField(max_length=30)
     codigo_postal = models.IntegerField()
+
+
+class UserOrder(models.Model):
+    user = models.ForeignKey(User, null=True)
+    products = models.ManyToManyField(Product)
+    total_payment = models.IntegerField(default=0)
+    created = models.DateTimeField(auto_now_add=True)
+
