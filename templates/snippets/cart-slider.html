@@ -1,4 +1,5 @@
 <div id="cart_wrapper">
+  {% if cart_products.count > 0 %}
   <h4>Cesta ({{ cart_products.count }})</h4>
   <div id="cart_list">
     {% for cp in cart_products %}
@@ -24,4 +25,8 @@
     <span id="total_shipment">Envío: <span class="result">Gratuito</span></span>
     <a href="{% url 'payment:personal' %}" class="btn btn-default" id="cart_comprar">Comprar</a>
   </div>
+
+  {% else %}
+  <h4>Tu bolsa está vacía</h4>
+  {% endif %}
 </div>

@@ -1,4 +1,4 @@
-from django.shortcuts import redirect, get_object_or_404
+from django.shortcuts import redirect, get_object_or_404, reverse
 from django.views.generic import View
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import F
@@ -8,6 +8,11 @@ from .models import CartProduct
 
 
 class AddToCart(LoginRequiredMixin, View):
+
+    def get(self, request, **kwargs):
+        product_pk = self.kwargs.get("pk")
+        product = Product.objects.get(pk=product_pk)
+        return redirect(product.get_absolute_url())
 
     def post(self, request, **kwargs):
         user = self.request.user

@@ -34,12 +34,13 @@
           <a href="{% url 'accounts:login' %}"><i class="fa fa-user nav_icon"></i></a>
           {% endif %}
         </li>
+        {% if user.is_authenticated %}
         <li class="nav-item">
           <i id="cart_icon" class="fa fa-shopping-bag nav_icon">
             <span id="cart_icon_count">{{cart_products.count}}</span>
           </i>
-
         </li>
+        {% endif %}
       </ul>
     </div>
   </nav>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <title>Datos Personales | Wooly</title>
+  {% include 'snippets/bootstrap-jquery.html' %}
+  {% include 'snippets/general_style.html' %}
+</head>
+<body>
+  <div class="container">
+    {% load static %}
+    <a href="{% url 'landing' %}">
+      <img src="{% static 'images/sheep-logo.png' %}" id="logo_payment" />
+    </a>
+    <!-- Notification for the user -->
+    <div id="payment_completed_wrapper">
+      <p id="messages_template_content">
+        {{ message_to_user }}
+        {% if link_back %}
+        <span> Haz click <a href="{% url 'landing' %}">aquí</a> para
+        volver a la pagina principal.</span>
+        {% endif %}
+      </p>
+    </div>
+
+  </div>
+</body>
+</html>

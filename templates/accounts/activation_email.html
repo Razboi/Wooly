@@ -1,0 +1,11 @@
+{% autoescape off %}
+Hola {{ user.username }},
+Por favor haz click en el siguiente link para finalizar tu registro en Wooly,
+
+http://{{ domain }}{% url 'accounts:activate' uidb64=uid token=token %}
+
+Si el link no funciona, por favor copia y pegalo en una nueva ventana del navegador.
+
+Atentamente,
+El equipo de Wooly.
+{% endautoescape %}

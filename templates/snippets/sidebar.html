@@ -23,9 +23,12 @@
   </ul>
   <ul>
     <b><a href="{% url 'products:category' gender=gender category='Calzado' %}">Calzado</a></b>
-    <li><a href="{% url 'products:category' gender=gender category='Zapatos' %}">Zapatos</a></li>
     {% if gender == "Men" %}
+    <li><a href="{% url 'products:category' gender=gender category='Zapatos' %}">Zapatos</a></li>
     <li><a href="{% url 'products:category' gender=gender category='Mocasines' %}">Mocasines</a></li>
+    {% else %}
+    <li><a href="{% url 'products:category' gender=gender category='Zapatos_tacon' %}">Zapatos tacón</a></li>
+    <li><a href="{% url 'products:category' gender=gender category='Zapatos_planos' %}">Zapatos planos</a></li>
     {% endif %}
     <li><a href="{% url 'products:category' gender=gender category='Botas' %}">Botas y botines</a></li>
     <li><a href="{% url 'products:category' gender=gender category='Deportivas' %}">Deportivas</a></li>

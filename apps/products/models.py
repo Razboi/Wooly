@@ -1,5 +1,6 @@
 from django.db import models
 from django.db.models.signals import pre_save
+from django.shortcuts import reverse
 
 from utils.unique_slug_generator import unique_slug_generator
 
@@ -36,6 +37,8 @@ class Product(models.Model):
     PANTALONES = "Pantalones"
     SUDADERAS = "Sudaderas"
     ZAPATOS = "Zapatos"
+    ZAPATOS_TACON = "Zapatos_tacon"
+    ZAPATOS_PLANOS = "Zapatos_planos"
     MOCASINES = "Mocasines"
     BOTAS = "Botas"
     DEPORTIVAS = "Deportivas"
@@ -56,6 +59,8 @@ class Product(models.Model):
         (PANTALONES, "Pantalones"),
         (SUDADERAS, "Sudaderas"),
         (ZAPATOS, "Zapatos"),
+        (ZAPATOS_TACON, "Zapatos_tacon"),
+        (ZAPATOS_PLANOS, "Zapatos_planos"),
         (MOCASINES, "Mocasines"),
         (BOTAS, "Botas"),
         (DEPORTIVAS, "Deportivas"),
@@ -81,6 +86,9 @@ class Product(models.Model):
         description = self.name + " | " + self.gender + " |D " + str(self.discounted) + " |N " + \
                       str(self.new)
         return description
+
+    def get_absolute_url(self):
+        return reverse("products:details", kwargs={"gender": self.gender, "slug": self.slug})
 
 
 def pre_save_receiver(sender, instance, *args, **kwargs):

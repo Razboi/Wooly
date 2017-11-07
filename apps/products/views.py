@@ -1,5 +1,7 @@
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, View
 from django.db.models import Q
+from django.contrib import messages
+from django.shortcuts import render
 
 from .models import Product
 
@@ -84,19 +86,17 @@ class ProductsList(ListView):
         return context
 
 
-class IndexView(ListView):
-    template_name = "products/index.html"
+class IndexView(View):
 
-    def get_queryset(self):
-        return None
-
-    def get_context_data(self, **kwargs):
-        context = super(IndexView, self).get_context_data(**kwargs)
-        gender = self.kwargs.get("gender")
-        context["gender"] = gender
+    def get(self, request, **kwargs):
+        template_name = "products/index.html"
+        gender = kwargs.get("gender")
         if gender == "Women":
             title = "Moda Mujer"
         else:
             title = "Moda Hombre"
-        context["title"] = title
-        return context
+        context = {
+            "gender": gender,
+            "title": title,
+        }
+        return render(request, template_name, context)

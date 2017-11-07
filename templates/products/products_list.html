@@ -7,7 +7,7 @@
     </div>
     <div class="col-10 products_list">
       {% for product in object_list %}
-      <a href="{% url 'products:details' gender=gender slug=product.slug %}">
+      <a href="{{ product.get_absolute_url }}">
         <div class="col-4 product_container">
           <img src="{{ product.image.url}}" />
           <div class="item_data">

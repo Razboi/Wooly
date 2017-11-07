@@ -34,10 +34,11 @@ class UserRegisterForm(forms.ModelForm):
             raise forms.ValidationError("That username has already been registered")
 
         # if the email is already registered raise an error
-        # email = self.cleaned_data.get('email')
-        # email_qs = User.objects.filter(email=email)
-        # if email_qs.exists():
-        #     raise forms.ValidationError("This email address has already been registered")
+        email = self.cleaned_data.get('email')
+        email_qs = User.objects.filter(email=email)
+        if email_qs.exists():
+            raise forms.ValidationError("This email address has already been registered")
+
         return super(UserRegisterForm, self).clean()
 
 

@@ -1,7 +1,8 @@
-from .base import *
-from .production import *
-
 try:
 	from .local import *
-except:
+except ImportError:
 	pass
+
+
+# from .base import *
+# from .production import *
