@@ -27,7 +27,8 @@
           No tienes una cuenta? <b><a href="{% url 'accounts:register' %}">Registrate</a></b>
         </span>
         <br />
-        <span id="forgot_password"><b><a href="#">Has olvidado tu contraseña?</a></b></span>
+        <span id="forgot_password"><b><a href="{% url 'accounts:password_reset' %}">
+          Has olvidado tu contraseña?</a></b></span>
         {% else %}
         Tienes una cuenta? <b><a href="{% url 'accounts:login' %}">Inicia sesión</a></b>
         {% endif %}

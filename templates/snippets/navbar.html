@@ -48,19 +48,24 @@
   <div id="sub_menu">
     <ul>
       <li>
-        <a href="{% url 'products:category' gender=gender category='Novedades' %}">Novedades</a>
+        <a href="{% url 'products:category' gender=gender category='Novedades' %}" class="category">
+          Novedades</a>
       </li>
       <li>
-        <a href="{% url 'products:category' gender=gender category='Ofertas' %}">Ofertas</a>
+        <a href="{% url 'products:category' gender=gender category='Ofertas' %}" class="category" >
+          Ofertas</a>
       </li>
       <li>
-        <a href="{% url 'products:category' gender=gender category='Prendas' %}">Prendas</a>
+        <a href="{% url 'products:category' gender=gender category='Prendas' %}" class="category">
+          Prendas</a>
       </li>
       <li>
-        <a href="{% url 'products:category' gender=gender category='Calzado' %}">Calzado</a>
+        <a href="{% url 'products:category' gender=gender category='Calzado' %}" class="category">
+          Calzado</a>
       </li>
       <li>
-        <a href="{% url 'products:category' gender=gender category='Complementos' %}">Complementos</a>
+        <a href="{% url 'products:category' gender=gender category='Complementos' %}" class="category">
+          Complementos</a>
       </li>
     </ul>
 
@@ -71,3 +76,13 @@
   {% include 'snippets/cart-slider.html' %}
 
 </div>
+
+{% block head %}
+<!-- Selected category activation -->
+<script>
+  var loc = window.location.pathname;
+  $("#sub_menu").find(".category").each(function() {
+    $(this).toggleClass("active", $(this).attr("href") == loc);
+  });
+</script>
+{% endblock %}

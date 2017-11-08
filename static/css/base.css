@@ -201,6 +201,16 @@ nav {
   width: 200px;
 }
 
+.category.active {
+  border-bottom: 3px solid #cccccc;
+  padding-bottom: 1px;
+}
+
+.subcategory.active {
+  border-bottom: 2px solid #cccccc;
+  font-weight: bold;
+}
+
 /* ------------------------Index ------------------- */
 
 #index_container {
@@ -310,12 +320,16 @@ nav {
 
 /* ------------------------Products List ------------------- */
 
+#products_container {
+  margin-bottom: 60px;
+}
+
 .product_container {
   margin-top: 40px;
   padding: 0px;
   float: left;
   overflow: hidden;
-  height: 761.7px;
+  height: 765px;
   position: relative;
 }
 
@@ -338,9 +352,19 @@ nav {
   font-size: 17px;
 }
 
-.item_data span {
+.item_data .price {
   font-size: 18px;
   font-weight: bold;
+}
+
+.price.discounted {
+  color: #ff0000;
+}
+
+.price_before {
+  font-size: 13px;
+  text-decoration: line-through;
+  color: #808080;
 }
 
 .sidebar {
@@ -368,6 +392,7 @@ nav {
 .products_list {
   padding: 0px;
 }
+
 
 /* ------------------------Product Details ------------------- */
 
@@ -697,4 +722,33 @@ nav {
 
 #messages_template_content {
   text-align: center;
+}
+
+/* ------------------------ Password Reset ------------------- */
+
+#password_reset_content {
+  display: block;
+  margin: 10px auto;
+}
+
+#password_reset_content .btn.password_reset {
+  background: #000;
+  color: #fff;
+}
+
+.field-password1 {
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.field-password2 {
+  margin-bottom: 20px;
+}
+
+.field-password1 label {
+  padding-right: 35px;
+}
+
+.field-password2 label {
+  padding-right: 10px;
 }
