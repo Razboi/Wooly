@@ -31,4 +31,3 @@ class UserOrder(models.Model):
     products = models.ManyToManyField(Product)
     total_payment = models.IntegerField(default=0)
     created = models.DateTimeField(auto_now_add=True)
-

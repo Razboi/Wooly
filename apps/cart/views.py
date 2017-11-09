@@ -2,6 +2,8 @@ from django.shortcuts import redirect, get_object_or_404, reverse
 from django.views.generic import View
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import F
+from django.core import serializers
+from django.http import HttpResponse
 
 from apps.products.models import Product
 from .models import CartProduct
@@ -33,9 +35,8 @@ class AddToCart(LoginRequiredMixin, View):
 
 
 class CartDelete(LoginRequiredMixin, View):
-
-    def get(self, request, **kwargs):
-        cart_pk = self.kwargs.get("pk")
+    def post(self, request, **kwargs):
+        cart_pk = request.POST["pk"]
         cart = get_object_or_404(CartProduct, user=self.request.user, pk=cart_pk)
         # if the quantity of the product is > 1 decrement one unit, else delete the product
         if cart.quantity > 1:
@@ -43,6 +44,7 @@ class CartDelete(LoginRequiredMixin, View):
             cart.save()
         else:
             cart.delete()
-        return redirect("products:category", gender=cart.product.gender, category=cart.product.category)
-
+        new_cart = CartProduct.objects.filter(user=self.request.user)
+        data = serializers.serialize("json", new_cart, fields=("nombre"))
+        return HttpResponse(data, content_type="application/json")
 

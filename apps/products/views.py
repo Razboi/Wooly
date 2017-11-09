@@ -1,6 +1,5 @@
 from django.views.generic import ListView, DetailView, View
 from django.db.models import Q
-from django.contrib import messages
 from django.shortcuts import render
 
 from .models import Product

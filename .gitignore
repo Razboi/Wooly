@@ -112,3 +112,4 @@ libraries
 dataSources.ids
 datasources.xml
 images/
+.vscode

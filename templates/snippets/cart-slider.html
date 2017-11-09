@@ -13,7 +13,7 @@
           {% if cp.quantity > 1 %}<small> x {{cp.quantity}}</small>{% endif %}</span>
         <span class="cart_slider_size cp_info secondary">Talla: {{cp.size}}</span>
         <span class="cart_slider_quantity cp_info secondary">Cantidad: {{cp.quantity}}</span>
-        <a href="{% url 'cart:delete' pk=cp.pk %}"><i class="fa fa-trash-o"></i></a>
+        <a id="delete_cart_product" href="#" name="{{cp.pk}}"><i class="fa fa-trash-o"></i></a>
       </div>
     </div>
     {% endfor %}
@@ -30,3 +30,28 @@
   <h4>Tu bolsa está vacía</h4>
   {% endif %}
 </div>
+
+{% block head %}
+<script>
+  $("#delete_cart_product").click(function(event){
+    event.preventDefault();
+    var name = $(this).attr("name");
+    var that = $(this);
+    $.ajax({
+      url: "/cart/delete/",
+      type: "POST",
+      data: {
+        pk: name,
+        csrfmiddlewaretoken: '{{ csrf_token }}'
+      },
+      success:function(data){
+        that.closest("#cart_product").fadeOut();
+        var price = that.closest(".cart_slider_price").val();
+        var total_price = $("#total_price .result").val();
+        var new_total = total_price - price;
+        $("#total_price .result").text(new_total);
+      }
+    });
+  });
+</script>
+{% endblock %}

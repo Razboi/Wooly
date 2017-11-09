@@ -8,7 +8,7 @@ User = get_user_model()
 
 class CartProduct(models.Model):
     product = models.ForeignKey(Product)
-    user = models.ForeignKey(User, related_name="cart_product")
+    user = models.ForeignKey(User)
     quantity = models.IntegerField(default=1)
     size = models.CharField(max_length=15, null=True)
 

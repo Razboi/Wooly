@@ -27,9 +27,14 @@
 
       <!-- Right Elements -->
       <ul class="navbar-nav ml-auto" id="nav_right_elements">
-        <li class="nav-item">
+        <li class="nav-item dropdown">
           {% if user.is_authenticated %}
-          <a id="nav_username" href="{% url 'accounts:logout' %}">{{user.username}}</a>
+          <a id="nav_username" class="dropdown-toggle" data-toggle="dropdown" href="{% url 'accounts:logout' %}">
+            {{user.username}}
+          </a>
+          <div class="dropdown-menu" id="username_dropdown">
+            <a class="dropdown-item" href="{% url 'accounts:logout' %}">Salir</a>
+          </div>
           {% else %}
           <a href="{% url 'accounts:login' %}"><i class="fa fa-user nav_icon"></i></a>
           {% endif %}

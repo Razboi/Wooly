@@ -43,7 +43,7 @@ def register_view(request):
         email.send()
 
         context = {
-            "message_to_user": '''Un mensaje de confirmación ha sido enviado a tu email, por favor 
+            "message_to_user": '''Un mensaje de confirmación ha sido enviado a tu email, por favor
                                         comprueba también la bandeja de spam.'''
         }
         return render(request, "snippets/message_template.html", context)
@@ -112,7 +112,7 @@ def activate(request, uidb64, token):
         return render(request, template_name, context)
     else:
         context = {
-            "message_to_user": """El link de activación es invalido, es posible que ya se haya utilizado. 
+            "message_to_user": """El link de activación es invalido, es posible que ya se haya utilizado.
                        Por favor ponte en contacto con nosotros.""",
             "link_back": True,
         }
