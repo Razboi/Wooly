@@ -9,7 +9,6 @@ def cart_products_processor(request):
         cart_products = CartProduct.objects.filter(user=request.user)
         total_price = 0
         for i in cart_products:
-            product_price = i.product.price * i.quantity
-            total_price = total_price + product_price
+            total_price = total_price + i.product.price
         return {"cart_products": cart_products, "total_price": total_price}
     return {"cart_products": None}

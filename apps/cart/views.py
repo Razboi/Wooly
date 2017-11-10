@@ -1,8 +1,9 @@
+import json
+
 from django.shortcuts import redirect, get_object_or_404, reverse
 from django.views.generic import View
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import F
-from django.core import serializers
 from django.http import HttpResponse
 
 from apps.products.models import Product
@@ -21,13 +22,9 @@ class AddToCart(LoginRequiredMixin, View):
         product_pk = self.kwargs.get("pk")
         product = Product.objects.get(pk=product_pk)
         size = request.POST["sizes"]
-        product_qs = CartProduct.objects.filter(product=product, user=user, size=size)
-        # if the product already exists (same size) increment one unit, else add the product
-        if product_qs.exists():
-            product_qs.update(quantity=F("quantity") + 1)  # F is used to increment/decrement a model field
-        else:
-            cart_p = CartProduct(product=product, user=user, size=size)
-            cart_p.save()
+
+        cart_p = CartProduct(product=product, user=user, size=size)
+        cart_p.save()
 
         gender = product.gender
         category = product.category
@@ -38,13 +35,7 @@ class CartDelete(LoginRequiredMixin, View):
     def post(self, request, **kwargs):
         cart_pk = request.POST["pk"]
         cart = get_object_or_404(CartProduct, user=self.request.user, pk=cart_pk)
-        # if the quantity of the product is > 1 decrement one unit, else delete the product
-        if cart.quantity > 1:
-            cart.quantity -= 1
-            cart.save()
-        else:
-            cart.delete()
-        new_cart = CartProduct.objects.filter(user=self.request.user)
-        data = serializers.serialize("json", new_cart, fields=("nombre"))
-        return HttpResponse(data, content_type="application/json")
+        cart.delete()
 
+        data = ""
+        return HttpResponse(json.dumps(data), content_type="application/json")

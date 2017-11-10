@@ -1,6 +1,6 @@
 <div id="cart_wrapper">
   {% if cart_products.count > 0 %}
-  <h4>Cesta ({{ cart_products.count }})</h4>
+  <h4>Cesta (<span id="numer_products">{{ cart_products.count }}</span>)</h4>
   <div id="cart_list">
     {% for cp in cart_products %}
     <div id="cart_product" class="container-fluid row">
@@ -9,11 +9,9 @@
       </div>
       <div class="col-8">
         <span class="cart_slider_name cp_info">{{cp.product.name}}</span>
-        <span class="cart_slider_price cp_info">{{cp.product.price}} €
-          {% if cp.quantity > 1 %}<small> x {{cp.quantity}}</small>{% endif %}</span>
+        <span class="cart_slider_price cp_info">{{cp.product.price}} €</span>
         <span class="cart_slider_size cp_info secondary">Talla: {{cp.size}}</span>
-        <span class="cart_slider_quantity cp_info secondary">Cantidad: {{cp.quantity}}</span>
-        <a id="delete_cart_product" href="#" name="{{cp.pk}}"><i class="fa fa-trash-o"></i></a>
+        <a class="delete_cart_product" href="#" name="{{cp.pk}}"><i class="fa fa-trash-o"></i></a>
       </div>
     </div>
     {% endfor %}
@@ -33,25 +31,42 @@
 
 {% block head %}
 <script>
-  $("#delete_cart_product").click(function(event){
-    event.preventDefault();
-    var name = $(this).attr("name");
-    var that = $(this);
-    $.ajax({
-      url: "/cart/delete/",
-      type: "POST",
-      data: {
-        pk: name,
-        csrfmiddlewaretoken: '{{ csrf_token }}'
-      },
-      success:function(data){
-        that.closest("#cart_product").fadeOut();
-        var price = that.closest(".cart_slider_price").val();
-        var total_price = $("#total_price .result").val();
-        var new_total = total_price - price;
-        $("#total_price .result").text(new_total);
-      }
-    });
+  $(".delete_cart_product").each(function(event){
+    $(this).click(function(event) {
+      event.preventDefault();
+      var name = $(this).attr("name");
+      var that = $(this);
+      $.ajax({
+        url: "/cart/delete/",
+        type: "POST",
+        data: {
+          pk: name,
+          csrfmiddlewaretoken: '{{ csrf_token }}'
+        },
+        dataType: "json",
+        // when a product is deleted do this:
+        success:function( json ){
+          // hide the product
+          that.closest("#cart_product").slideUp();
+          // subtract the product price to the total price
+          var price = parseFloat( that.siblings(".cart_slider_price").text() );
+          var total_price = parseFloat( $("#total_price .result").text() );
+          var new_total = (total_price - price).toFixed(2);
+          $("#total_price .result").text( new_total + "€" );
+          // display the new products count
+          var numProducts = parseInt( $("#numer_products").text() );
+          var newLength = numProducts - 1;
+          $("#numer_products").text(newLength);
+          $("#cart_icon_count").text(newLength);
+          // if the product count is <= 0 display the empty cart message
+          if (newLength <= 0) {
+            $("#cart_wrapper").slideUp();
+            $("#cart_wrapper").html("<h4>Tu bolsa está vacía</h4>");
+            $("#cart_wrapper").slideDown();
+          }
+        }
+      });
+    })
   });
 </script>
 {% endblock %}
