@@ -1,22 +1,22 @@
 <div id="navbar_wrapper" class="fixed-top">
-  <nav class="navbar navbar-expand-md navbar-custom">
+  <nav id="main_navbar" class="navbar navbar-expand-lg navbar-custom">
     <!-- Brand and toggle -->
     <a class="navbar-brand" href="{% url 'landing' %}">Wooly</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_wrapper"
-    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar_toggler"
+    aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
       <span class="fa fa-bars"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbar_wrapper">
+    <div class="collapse navbar-collapse navbar_toggler">
       <!-- Left Elements -->
-      <ul class="navbar-nav ml-auto" id="nav_left">
+      <ul class="navbar-nav mr-auto" id="nav_left">
         <li class="nav-item gender">
           <a href="{% url 'products:index' gender='Women' %}">Mujer</a>
         </li>
         <li class="nav-item gender">
           <a href="{% url 'products:index' gender='Men' %}">Hombre</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item search-item">
           {% csrf_token %}
           <form id="search_form" method="GET" action="{% url 'products:search' gender=gender %}">
             <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
@@ -50,37 +50,41 @@
     </div>
   </nav>
 
-  <div id="sub_menu">
-    <ul>
-      <li>
-        <a href="{% url 'products:category' gender=gender category='Novedades' %}" class="category">
-          Novedades</a>
-      </li>
-      <li>
-        <a href="{% url 'products:category' gender=gender category='Ofertas' %}" class="category" >
-          Ofertas</a>
-      </li>
-      <li>
-        <a href="{% url 'products:category' gender=gender category='Prendas' %}" class="category">
-          Prendas</a>
-      </li>
-      <li>
-        <a href="{% url 'products:category' gender=gender category='Calzado' %}" class="category">
-          Calzado</a>
-      </li>
-      <li>
-        <a href="{% url 'products:category' gender=gender category='Complementos' %}" class="category">
-          Complementos</a>
-      </li>
-    </ul>
-
+  <nav id="secondary_navbar" class="navbar navbar-expand-lg navbar-custom">
     {% load static %}
     <a href="{% url 'landing' %}"><img src="{% static 'images/sheep-logo.png' %}" class="logo" /></a>
-  </div>
+    <div id="sub_menu" class="collapse navbar-collapse navbar_toggler">
+      <ul>
+        <li>
+          <a href="{% url 'products:category' gender=gender category='Novedades' %}" class="category">
+            Novedades</a>
+        </li>
+        <li>
+          <a href="{% url 'products:category' gender=gender category='Ofertas' %}" class="category" >
+            Ofertas</a>
+        </li>
+        <li>
+          <a href="{% url 'products:category' gender=gender category='Prendas' %}" class="category">
+            Prendas</a>
+        </li>
+        <li>
+          <a href="{% url 'products:category' gender=gender category='Calzado' %}" class="category">
+            Calzado</a>
+        </li>
+        <li>
+          <a href="{% url 'products:category' gender=gender category='Complementos' %}" class="category">
+            Complementos</a>
+        </li>
+      </ul>
 
-  {% include 'snippets/cart-slider.html' %}
 
-</div>
+    </div>
+
+    {% include 'snippets/cart-slider.html' %}
+  </nav>
+
+
+
 
 {% block head %}
 <!-- Selected category activation -->

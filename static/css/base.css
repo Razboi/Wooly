@@ -43,7 +43,7 @@ body {
 }
 
 .landing_gender_info.men {
-  left: 90px;
+  left: 10%;
 }
 
 .landing_gender_info.men:hover.landing_gender_info {
@@ -51,7 +51,7 @@ body {
 }
 
 .landing_gender_info.women {
-  right: 90px;
+  right: 10%;
 }
 
 .landing_gender_info.women:hover.landing_gender_info {
@@ -63,8 +63,27 @@ body {
   height: 80px;
   width: 80px;
   top: 48%;
-  left: 47.9%;
+  right: -40px;
   z-index: 1;
+}
+
+/* layout for small devices */
+@media screen and (max-width: 480px) {
+  #logo_landing {
+    top: 2%;
+  }
+  .landing_gender_info h1 {
+    font-size: 48px;
+  }
+
+  .landing_gender_info.men {
+    left: 20%;
+  }
+
+  #men_landing {
+    background-attachment: fixed;
+    background-position: 50% 50%;
+  }
 }
 
 /* ------------------------NavBar ------------------- */
@@ -73,8 +92,8 @@ body {
   background: rgba(255, 255, 255, 0.6);
 }
 
-nav {
-  padding: 0px !important;
+#main_navbar {
+  padding: 0px;
   height: 60px;
   border-bottom: 1px solid #e4e4e4;
 }
@@ -100,8 +119,7 @@ nav {
 }
 
 #nav_left {
-  position: absolute;
-  left: 90px;
+  margin-left: 90px;
 }
 
 #nav_left li {
@@ -124,8 +142,7 @@ nav {
 }
 
 #nav_right_elements {
-  position: absolute;
-  right: 90px;
+  margin-right: 90px;
 }
 
 #nav_username {
@@ -154,17 +171,15 @@ nav {
   font-size: 17px !important;
 }
 
-#sub_menu {
+#secondary_navbar {
+  padding: 0px;
   height: 50px;
   border-bottom: 1px solid #D3D3D3;
-  position: relative;
 }
 
 #sub_menu ul {
-  position: absolute;
-  left: 90px;
-  padding: 10px 0px;
-  margin: 0px;
+  margin-left: 90px;
+  padding: 15px 0px 0px 0px;
 }
 
 #sub_menu ul li {
@@ -210,6 +225,65 @@ nav {
   font-weight: bold;
 }
 
+/* layout for small devices */
+@media screen and (max-width: 980px) {
+  nav {
+    height: auto !important;
+
+  }
+  #main_navbar {
+    min-height: 50px;
+  }
+  #secondary_navbar {
+
+  }
+
+  #nav_right_elements {
+    margin: 20px 0px 0px 0px;
+    font-size: 14px;
+    flex-direction: row;
+    position: absolute;
+    top: 50px;
+    left: 10px;
+  }
+
+  #nav_left {
+    margin: 80px 0px 0px 0px;
+    padding: 10px 0px;
+    flex-direction: row-reverse;
+    font-size: 14px;
+  }
+
+  #nav_left li {
+    padding-left: 5px;
+  }
+
+  #nav_left form {
+    padding: 0px;
+  }
+
+  #nav_left form input:focus {
+    padding: 5px;
+    width: 285px;
+  }
+
+  #sub_menu ul {
+    font-size: 15px;
+    margin: 0px;
+  }
+
+  .logo {
+    display: none;
+  }
+
+  #content_wrapper {
+    padding-top: 50px;
+  }
+
+  #username_dropdown {
+    position: absolute !important;
+  }
+}
 
 /* ------------------------Index ------------------- */
 

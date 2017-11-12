@@ -10,8 +10,9 @@
   <div class="container-fluid" id="landing_container">
     <div class="row">
       {% load static %}
-      <img src="{% static 'images/sheep-logo.png' %}" id="logo_landing" />
+
       <div class="col-6 gender_landing" id="women_landing">
+        <img src="{% static 'images/sheep-logo.png' %}" id="logo_landing" />
         <a href="{% url 'products:index' gender='Women' %}">
           <div class="landing_gender_info women">
             <h1 class="display-3">Women</h1>
