@@ -5,10 +5,10 @@
     <div class="col-2 sidebar_wrapper">
       {% include 'snippets/sidebar.html' %}
     </div>
-    <div class="col-4 product_details_image">
+    <div class="col-6 col-xl-4 product_details_image">
       <img src="{{object.image.url}}" />
     </div>
-    <div class="col-6 product_details_info">
+    <div class="col-4 col-xl-6 product_details_info">
       <span id="details_price">{{ object.price}} €</span>
       <span id="details_secondary_info"><i class="fa fa-info-circle"></i>Envios y devoluciones gratuitas</span>
       <h3 id="details_title">{{object.name}}</h3>

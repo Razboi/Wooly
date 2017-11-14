@@ -38,14 +38,7 @@
 
     <div id="payment_confirmation_wrapper" class="row">
       <div class="col-9">
-        <table>
-          <tr>
-            <th>Precio</th>
-            <th>Talla</th>
-            <th>Cantidad</th>
-            <th>Producto</th>
-          </tr>
-        </table>
+
         <div id="payment_products_list">
           {% for cp in cart_products %}
 
@@ -54,11 +47,18 @@
               <img class="cart_slider_img" src="{{cp.product.image.url}}" />
             </div>
             <div class="col-10">
-              <span class="confirmation_info price col-2">{{cp.product.price}} €
-                {% if cp.quantity > 1 %}<small><br />x {{cp.quantity}}</small>{% endif %}</span>
-              <span class="confirmation_info col-2">{{cp.size}}</span>
-              <span class="confirmation_info col-2">{{cp.quantity}}</span>
-              <span class="confirmation_info col-6">{{cp.product.name}}</span>
+              <span class="confirmation_info price col-3">
+                <span class="prod_label">Precio</span>
+                {{cp.product.price}}€
+              </span>
+              <span class="confirmation_info col-2">
+                <span class="prod_label">Talla</span>
+                {{cp.size}}
+              </span>
+              <span class="confirmation_info col-7">
+                <span class="prod_label">Producto</span>
+                {{cp.product.name}}
+              </span>
             </div>
           </div>
 
@@ -67,7 +67,7 @@
 
       </div>
       <div class="col-3">
-        <span id="total_price"><b>Total: <span class="result">{{total_price}}</span></b></span>
+        <span id="total_price"><b>Total: <span class="result">{{total_price}}€</span></b></span>
         <br />
         <span id="total_shipment">Envío: <span class="result">Gratuito</span></span>
         <a href="{% url 'payment:complete' %}" class="btn btn-default" id="cart_comprar">Comprar</a>
